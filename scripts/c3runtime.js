@@ -1376,6 +1376,7 @@ function or(l, r)
 self.C3_ExpressionFuncs = [
 		() => "Başlangıç",
 		() => "dogruanimasyon",
+		() => 99,
 		p => {
 			const n0 = p._GetNode(0);
 			const v1 = p._GetNode(1).GetVar();
@@ -1422,15 +1423,15 @@ self.C3_ExpressionFuncs = [
 			const n0 = p._GetNode(0);
 			return () => n0.ExpInstVar();
 		},
-		() => 3,
+		() => 10,
 		() => "arka",
 		() => 0.3,
+		() => 100,
 		() => "KartlarHazır",
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			return () => (f0() * 0.1);
 		},
-		() => 100,
 		() => 0.5,
 		() => 19,
 		p => {
@@ -1446,7 +1447,6 @@ self.C3_ExpressionFuncs = [
 			const v1 = p._GetNode(1).GetVar();
 			return () => Math.abs((v0.GetValue() - v1.GetValue()));
 		},
-		() => 10,
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			return () => (f0() / 2);
