@@ -1415,6 +1415,16 @@ self.C3_ExpressionFuncs = [
 			const v1 = p._GetNode(1).GetVar();
 			return () => n0.ExpObject(v1.GetValue());
 		},
+		() => 2.2,
+		() => 0.2,
+		() => "on",
+		p => {
+			const n0 = p._GetNode(0);
+			return () => n0.ExpInstVar();
+		},
+		() => 3,
+		() => "arka",
+		() => 0.3,
 		() => "KartlarHazır",
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
@@ -1428,14 +1438,6 @@ self.C3_ExpressionFuncs = [
 			return () => f0();
 		},
 		() => "Tıklandığında",
-		() => "arka",
-		() => 0.2,
-		() => 0.3,
-		() => "on",
-		p => {
-			const n0 = p._GetNode(0);
-			return () => n0.ExpInstVar();
-		},
 		() => 2,
 		() => "SonucaBak",
 		() => "Kart Kontrol",
