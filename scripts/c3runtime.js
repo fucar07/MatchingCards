@@ -1203,6 +1203,21 @@ const C3=self.C3;C3.JobSchedulerRuntime=class extends C3.DefendedBase{constructo
 // scripts/shaders.js
 {
 self["C3_Shaders"] = {};
+self["C3_Shaders"]["sketch"] = {
+	glsl: "varying mediump vec2 vTex;\nuniform lowp sampler2D samplerFront;\nprecision mediump float;\nuniform mediump vec2 pixelSize;\nvoid main()\n{\nfloat dx = pixelSize.x;\nfloat dy = pixelSize.y;\nfloat bottomLeftIntensity = texture2D(samplerFront, vTex + vec2(-dx, dy)).r;\nfloat topRightIntensity = texture2D(samplerFront, vTex + vec2(dx, -dy)).r;\nfloat topLeftIntensity = texture2D(samplerFront, vTex + vec2(-dx, -dy)).r;\nfloat bottomRightIntensity = texture2D(samplerFront, vTex + vec2(dx, dy)).r;\nfloat leftIntensity = texture2D(samplerFront, vTex + vec2(-dx, 0.0)).r;\nfloat rightIntensity = texture2D(samplerFront, vTex + vec2(dx, 0.0)).r;\nfloat bottomIntensity = texture2D(samplerFront, vTex + vec2(0.0, dy)).r;\nfloat topIntensity = texture2D(samplerFront, vTex + vec2(0.0, -dy)).r;\nfloat h = -topLeftIntensity - 2.0 * topIntensity - topRightIntensity + bottomLeftIntensity + 2.0 * bottomIntensity + bottomRightIntensity;\nfloat v = -bottomLeftIntensity - 2.0 * leftIntensity - topLeftIntensity + bottomRightIntensity + 2.0 * rightIntensity + topRightIntensity;\nfloat mag = 1.0 - length(vec2(h, v));\nfloat a = texture2D(samplerFront, vTex).a;\ngl_FragColor = vec4(vec3(mag) * a, a);\n}",
+	glslWebGL2: "",
+	wgsl: "%%SAMPLERFRONT_BINDING%% var samplerFront : sampler;\n%%TEXTUREFRONT_BINDING%% var textureFront : texture_2d<f32>;\n%%C3_UTILITY_FUNCTIONS%%\n%%FRAGMENTINPUT_STRUCT%%\n%%FRAGMENTOUTPUT_STRUCT%%\n@fragment\nfn main(input : FragmentInput) -> FragmentOutput\n{\nvar pixelSize : vec2<f32> = c3_getPixelSize(textureFront);\nvar dx : f32 = pixelSize.x;\nvar dy : f32 = pixelSize.y;\nvar a : f32 = textureSample(textureFront, samplerFront, input.fragUV).a;\nvar bottomLeftIntensity : f32 = textureSample(textureFront, samplerFront, input.fragUV + vec2<f32>(-dx, dy)).r;\nvar topRightIntensity : f32 = textureSample(textureFront, samplerFront, input.fragUV + vec2<f32>(dx, -dy)).r;\nvar topLeftIntensity : f32 = textureSample(textureFront, samplerFront, input.fragUV + vec2<f32>(-dx, -dy)).r;\nvar bottomRightIntensity : f32 = textureSample(textureFront, samplerFront, input.fragUV + vec2<f32>(dx, dy)).r;\nvar leftIntensity : f32 = textureSample(textureFront, samplerFront, input.fragUV + vec2<f32>(-dx, 0.0)).r;\nvar rightIntensity : f32 = textureSample(textureFront, samplerFront, input.fragUV + vec2<f32>(dx, 0.0)).r;\nvar bottomIntensity : f32 = textureSample(textureFront, samplerFront, input.fragUV + vec2<f32>(0.0, dy)).r;\nvar topIntensity : f32 = textureSample(textureFront, samplerFront, input.fragUV + vec2<f32>(0.0, -dy)).r;\nvar h : f32 = -topLeftIntensity - 2.0 * topIntensity - topRightIntensity + bottomLeftIntensity + 2.0 * bottomIntensity + bottomRightIntensity;\nvar v : f32 = -bottomLeftIntensity - 2.0 * leftIntensity - topLeftIntensity + bottomRightIntensity + 2.0 * rightIntensity + topRightIntensity;\nvar mag : f32 = 1.0 - length(vec2<f32>(h, v));\nvar output : FragmentOutput;\noutput.color = vec4<f32>(vec3<f32>(mag) * a, a);\nreturn output;\n}",
+	blendsBackground: false,
+	usesDepth: false,
+	extendBoxHorizontal: 0,
+	extendBoxVertical: 0,
+	crossSampling: false,
+	mustPreDraw: false,
+	preservesOpaqueness: true,
+	supports3dDirectRendering: false,
+	animated: false,
+	parameters: []
+};
 
 }
 
@@ -1492,11 +1507,7 @@ self.C3_ExpressionFuncs = [
 		() => 1920,
 		() => 1080,
 		() => 1.5,
-		() => 0.1,
-		p => {
-			const v0 = p._GetNode(0).GetVar();
-			return () => and(v0.GetValue(), " sn");
-		}
+		() => 0.1
 ];
 
 
