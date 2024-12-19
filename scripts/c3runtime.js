@@ -1414,6 +1414,8 @@ function or(l, r)
 }
 
 self.C3_ExpressionFuncs = [
+		() => "fon",
+		() => 0,
 		() => 100,
 		() => 99,
 		() => "Başlangıç",
@@ -1451,7 +1453,6 @@ self.C3_ExpressionFuncs = [
 			return () => ((((f0(1) - v1.GetValue()) / 2) + (n2.ExpObject() / 2)) + ((n3.ExpObject() + v4.GetValue()) * (f5("y") - 1)));
 		},
 		() => "",
-		() => 0,
 		p => {
 			const n0 = p._GetNode(0);
 			const v1 = p._GetNode(1).GetVar();
@@ -1494,14 +1495,15 @@ self.C3_ExpressionFuncs = [
 		},
 		() => 60,
 		() => "Sayac",
+		() => 30,
 		p => {
 			const n0 = p._GetNode(0);
 			return () => n0.ExpObject();
 		},
+		() => "bitis1",
 		() => 3,
 		() => "Animation 1",
 		() => "Animation 2",
-		() => "fon",
 		() => 960,
 		() => 540,
 		() => 1920,
