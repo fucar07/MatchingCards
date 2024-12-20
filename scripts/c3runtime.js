@@ -1502,7 +1502,6 @@ self.C3_ExpressionFuncs = [
 		},
 		() => "bitis1",
 		() => 3,
-		() => "kartlarhazır",
 		() => "Animation 1",
 		() => "Animation 2",
 		() => 960,
