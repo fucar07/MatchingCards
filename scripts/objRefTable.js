@@ -38,10 +38,10 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Arr.Exps.At,
 		C3.Plugins.System.Acts.AddVar,
 		C3.Plugins.System.Cnds.PickAll,
-		C3.Plugins.System.Acts.Wait,
 		C3.Behaviors.Tween.Acts.TweenOneProperty,
 		C3.Plugins.Sprite.Acts.SetAnim,
 		C3.Plugins.Sprite.Acts.SetAnimFrame,
+		C3.Plugins.System.Acts.Wait,
 		C3.Behaviors.Timer.Acts.StartTimer,
 		C3.Plugins.System.Cnds.ForEach,
 		C3.Plugins.Arr.Acts.SetSize,
@@ -71,9 +71,10 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Browser.Acts.RequestFullScreen,
 		C3.Plugins.Audio.Acts.SetPaused,
 		C3.Plugins.System.Acts.SetBoolVar,
-		C3.Plugins.System.Acts.ResetGlobals,
 		C3.Behaviors.Flash.Acts.Flash,
-		C3.Plugins.System.Cnds.Every
+		C3.Plugins.System.Cnds.Every,
+		C3.Plugins.Audio.Acts.Stop,
+		C3.Plugins.System.Acts.ResetGlobals
 	];
 };
 self.C3_JsPropNameTable = [

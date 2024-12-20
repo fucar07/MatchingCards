@@ -1458,7 +1458,6 @@ self.C3_ExpressionFuncs = [
 			const v1 = p._GetNode(1).GetVar();
 			return () => n0.ExpObject(v1.GetValue());
 		},
-		() => 2.2,
 		() => 0.2,
 		() => "on",
 		p => {
@@ -1509,6 +1508,7 @@ self.C3_ExpressionFuncs = [
 		() => 1920,
 		() => 1080,
 		() => 1.5,
+		() => "bitis",
 		() => 0.1
 ];
 
